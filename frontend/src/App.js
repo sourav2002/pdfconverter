@@ -1,10 +1,12 @@
-function App() {
-  return (
-   <>
-<div>Hello</div>
+import React from 'react'
+import EntryForm from './components/EntryForm'
 
-   </>
-  );
+const App = () => {
+  return (
+    <div>
+      <EntryForm/>
+    </div>
+  )
 }
 
-export default App;
+export default App

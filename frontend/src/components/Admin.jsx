@@ -7,6 +7,7 @@ import { getAllEntries, searchByName } from "../redux/EntryThunkAPI";
 const Admin = () => {
   const dispatch = useDispatch();
   const entry = useSelector((state) => state.entry.entries);
+  console.log(entry);
   const [filter, setFilter] = useState();
   useEffect(() => {
     dispatch(getAllEntries());
@@ -46,9 +47,7 @@ const Admin = () => {
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="p-4">
-                #
-              </th>
+
               <th scope="col" className="px-6 py-3">
                 Token
               </th>
@@ -67,14 +66,13 @@ const Admin = () => {
             </tr>
           </thead>
           <tbody>
-            {entry.map((data, i) => {
+            {entry.length != 0 ? entry.map((data, i) => {
               return data.phoneNumbers.map((phone, ind) => {
                 return (
                   <tr
                     key={i + Math.random() + ind}
                     className="bg-white border-b dark:text-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                   >
-                    <td className="w-4 p-4">{ind + i + 1}</td>
                     <td className="px-6 py-4 font-medium dark:text-white text-gray-900 whitespace-nowrap">
                       {phone.token}
                     </td>
@@ -95,7 +93,13 @@ const Admin = () => {
                   </tr>
                 );
               });
-            })}
+            }) :
+              <tr> <td className="px-6 py-4 w-full font-medium dark:text-red-500 text-center text-gray-900 whitespace-nowrap">
+                No Data Found
+              </td></tr>
+
+
+            }
           </tbody>
         </table>
       </div>

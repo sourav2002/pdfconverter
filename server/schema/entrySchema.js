@@ -4,7 +4,8 @@ const entrySchema = mongoose.Schema({
   name: String,
   phoneNumbers: [
     {
-      number: String, token: {
+      number: String, 
+      token: {
     type : Number,
   }}],
   createdAt: {

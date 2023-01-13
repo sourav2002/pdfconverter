@@ -9,7 +9,7 @@ export const createEntry = async (req, res) => {
   const { name, phoneNumbers } = req.body;
   console.log(req.body);
   console.log(phoneNumbers);
-  const entry = new FormData({ name : name, phoneNumbers: phoneNumbers  });
+  const entry = new FormData({ name: name, phoneNumbers: phoneNumbers });
   console.log(entry);
   try {
     await entry.save();
@@ -37,17 +37,13 @@ export const getEntryByName = async (req, res) => {
     const count = await FormData.countDocuments({
       name: { $regex: new RegExp(`^${req.params.name}$`, "i") },
     });
-    if (count === 0) {
-      res.status(404).json({ message: "Name not found." });
-    } else {
-      const entries =
-        req.params.name === ""
-          ? await FormData.find()
-          : await FormData.find({
-              name: { $regex: new RegExp(`^${req.params.name}$`, "i") },
-            });
-      res.status(200).json(entries);
-    }
+    const entries =
+      req.params.name === ""
+        ? await FormData.find()
+        : await FormData.find({
+          name: { $regex: new RegExp(`^${req.params.name}$`, "i") },
+        });
+    res.status(200).json(entries);
   } catch (error) {
     try {
       const data = await FormData.find();
@@ -87,11 +83,9 @@ export const searchByName = async (req, res) => {
       req.params.name === ""
         ? await FormData.find()
         : await FormData.find({
-            name: { $regex: new RegExp(req.params.name, "i") },
-          });
-    if (entries.length == 0)
-      res.status(404).json({ message: "Name not found." });
-    else res.status(200).json(entries);
+          name: { $regex: new RegExp(req.params.name, "i") },
+        });
+    res.status(200).json(entries);
   } catch (error) {
     try {
       const data = await FormData.find();

@@ -7,7 +7,6 @@ import { getAllEntries, searchByName } from "../redux/EntryThunkAPI";
 const Admin = () => {
   const dispatch = useDispatch();
   const entry = useSelector((state) => state.entry.entries);
-  console.log(entry);
   const [filter, setFilter] = useState();
   useEffect(() => {
     dispatch(getAllEntries());
@@ -81,14 +80,14 @@ const Admin = () => {
                     <td className="px-6 py-4">
                       {new Date(data.createdAt).toLocaleString("en-IN")}
                     </td>
-                    <td className="px-6 py-4 text-right">
-                      <button
+                    <td className="px-6 py-4 ">
+                      <p
                         type="button"
                         onClick={() => downloadPDF(phone.token)}
-                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                        className="hover:text-white cursor-pointer text-blue-500"
                       >
                         Download
-                      </button>
+                      </p>
                     </td>
                   </tr>
                 );
@@ -97,8 +96,6 @@ const Admin = () => {
               <tr> <td className="px-6 py-4 w-full font-medium dark:text-red-500 text-center text-gray-900 whitespace-nowrap">
                 No Data Found
               </td></tr>
-
-
             }
           </tbody>
         </table>

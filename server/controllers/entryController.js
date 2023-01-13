@@ -10,7 +10,6 @@ export const createEntry = async (req, res) => {
   console.log(req.body);
   console.log(phoneNumbers);
   const entry = new FormData({ name: name, phoneNumbers: phoneNumbers });
-  console.log(entry);
   try {
     await entry.save();
     res.status(201).json(entry);

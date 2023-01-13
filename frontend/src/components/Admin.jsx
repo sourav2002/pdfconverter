@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import jsPDF from "jspdf";
 import { getAllEntries, searchByName } from "../redux/EntryThunkAPI";
 
 const Admin = () => {
@@ -17,9 +18,13 @@ const Admin = () => {
     else dispatch(searchByName(name));
   };
 
-  const downloadPDF = (token) => {
-    console.log(token);
-  };
+  const downloadPDF = (token, name, number) => {
+    const doc = new jsPDF();
+    doc.text("Token: " + token, 10, 10);
+    doc.text("Name: " + name, 10, 20);
+    doc.text("Phone Number: " + number, 10, 30);
+    doc.save("entry.pdf");
+  }
 
   return (
     <div className="p-12 mx-auto">
@@ -83,7 +88,7 @@ const Admin = () => {
                     <td className="px-6 py-4 ">
                       <p
                         type="button"
-                        onClick={() => downloadPDF(phone.token)}
+                        onClick={() => downloadPDF(phone.token, data.name, phone.number)}
                         className="hover:text-white cursor-pointer text-blue-500"
                       >
                         Download

@@ -2,7 +2,9 @@ import mongoose from "mongoose";
 
 const entrySchema = mongoose.Schema({
   name: String,
-  phoneNumbers: [{number: String, token: {
+  phoneNumbers: [
+    {
+      number: String, token: {
     type : Number,
   }}],
   createdAt: {

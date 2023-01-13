@@ -7,8 +7,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handleSubmit = () => {
+    if(id == "admin@admin.com" && password == "admin123"){
     navigate("/admin")
     console.log("LoggedIn");
+    }else{
+      window.alert("Email or Password is Incorrect")
+    }
   };
   return (
     <div className=" min-h-screen bg-slate-200 py-6 flex flex-col justify-center relative overflow-hidden sm:py-12">
@@ -16,7 +20,10 @@ const Login = () => {
         Login Form
       </span>
       <div className="border relative px-4 pt-7 pb-8 bg-white shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-b-md">
-      <p className="mb-4 text-red-500">Login with any id pass.</p>
+      <p className="mb-4 text-red-500">Login with <br />
+      email : admin@admin.com <br />
+      password : admin123
+      </p>
         <form
           onSubmit={(e) => {
             e.preventDefault();

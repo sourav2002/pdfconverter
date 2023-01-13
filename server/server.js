@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import env from "dotenv";
 import bodyParser from "body-parser";
 import entryRoute from './routers/entryRoutes.js'
-import FormData from "./schema/entrySchema.js";
 env.config();
 
 const app = express();
@@ -25,17 +24,10 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() =>
-  {
-    // const data = {
-    //     name: 'Ankit',
-    //     phoneNumbers: ['8989898989', '78767676882', '981927192792']
-    //   };
-      
-    //   FormData.insertMany(data)
-      app.listen(PORT, () =>
-        console.log(`server running on http://localhost:${PORT}`)
-      )
+  .then(() => {
+    app.listen(PORT, () =>
+      console.log(`server running on http://localhost:${PORT}`)
+    )
   }
   )
   .catch((err) => console.log(err + " can't connect to db"));

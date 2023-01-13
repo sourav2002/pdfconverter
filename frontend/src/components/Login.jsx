@@ -20,10 +20,10 @@ const Login = () => {
         Login Form
       </span>
       <div className="border relative px-4 pt-7 pb-8 bg-white shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-b-md">
-      <p className="mb-4 text-red-500">Login with <br />
+      {/* <p className="mb-4 text-red-500">Login with <br />
       email : admin@admin.com <br />
       password : admin123
-      </p>
+      </p> */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -47,6 +47,7 @@ const Login = () => {
           <input
             type="password"
             value={password}
+            autoComplete="disabled"
             onChange={(e) => setPassword(e.target.value)}
             className="border w-full h-10 px-3 mb-5 rounded-md"
             placeholder="password"

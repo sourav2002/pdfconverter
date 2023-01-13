@@ -16,7 +16,7 @@ const Login = () => {
         Login Form
       </span>
       <div className="border relative px-4 pt-7 pb-8 bg-white shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-b-md">
-      <p className="mb-4">Login with any id pass.</p>
+      <p className="mb-4 text-red-500">Login with any id pass.</p>
         <form
           onSubmit={(e) => {
             e.preventDefault();

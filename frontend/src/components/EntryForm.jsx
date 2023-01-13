@@ -33,7 +33,10 @@ function EntryForm() {
       setSubmitButton(true);
       const entryData = {
         name: name,
-        phoneNumbers: [{phoneNumbers}],
+        phoneNumbers: phoneNumbers.map((phoneNumber) => ({
+          number: phoneNumber,
+        })),
+        createdAt: new Date(),
       };
       console.log(entryData);
       dispatch(createEntry(entryData));

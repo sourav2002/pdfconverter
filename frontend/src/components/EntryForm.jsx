@@ -38,7 +38,6 @@ function EntryForm() {
         })),
         createdAt: new Date(),
       };
-      console.log(entryData);
       dispatch(createEntry(entryData));
       setName("");
       setPhoneNumbers([]);

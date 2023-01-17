@@ -8,9 +8,10 @@ import { getAllEntries, searchByName } from "../redux/EntryThunkAPI";
 const Admin = () => {
   const dispatch = useDispatch();
   const entry = useSelector((state) => state.entry.entries);
+  const loading = useSelector((state) => state.entry.loading);
   const [filter, setFilter] = useState();
   useEffect(() => {
-    dispatch(getAllEntries());
+    dispatch(getAllEntries() );
   }, []);
 
   const searchName = (name) => {
@@ -26,14 +27,31 @@ const Admin = () => {
     doc.save("entry.pdf");
   }
 
+  if(loading){
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-center text-xl font-bold">Loading...</div>
+      </div>
+    )
+  }
+
   return (
     <div className="p-12 mx-auto">
+      <div className="flex w-full text-center justify-between flex-wrap">
       <Link
         to="/"
-        className="w-full border my-2 text-white rounded-lg px-8 py-2 bg-blue-500  hover:bg-blue-600"
+        className=" border my-2 text-white rounded-lg px-8 py-2 bg-blue-500  hover:bg-blue-600"
       >
         Go back to form
       </Link>
+      <Link
+        to="/filterByDate"
+        className=" border my-2  text-white rounded-lg px-8 py-2 bg-blue-500  hover:bg-blue-600"
+      >
+        Filter by date
+      </Link>
+      </div>
+      
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="py-4 relative mt-1">
           <input

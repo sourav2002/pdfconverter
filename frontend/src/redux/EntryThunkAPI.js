@@ -33,7 +33,7 @@ export const getAllEntries = createAsyncThunk("entry/getAllEntries", async () =>
 
 export const getEntryByName = createAsyncThunk(
   "entry/getEntryByName",
-  async (name, thunkAPI) => {
+  async (name, thunkAPI) => { 
     try {
       const response = await axios.get(
         `https://entrytopdf.onrender.com/entry/name/${name}`

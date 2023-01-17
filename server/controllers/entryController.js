@@ -61,7 +61,7 @@ export const getEntryByToken = async (req, res) => {
     phoneNumbers: { $elemMatch: { token: token } },
   });
   if (!entry) {
-    res.status(404).json({ message: "Token not found." });
+    res.status(200).json({ message: "Token not found." });
   } else {
     const filteredPhoneNumber = entry.phoneNumbers.filter(
       (x) => x.token === token
